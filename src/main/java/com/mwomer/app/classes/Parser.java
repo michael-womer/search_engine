@@ -25,6 +25,8 @@ public class Parser {
         else if (args[0].equals("ingest")) {
             if (args.length != 2) {
                 return new Dispatchable(true, "Invalid number of arguments.  Command usage: ingest <filepath>", "ingest");
+            } else {
+                return new Dispatchable(false, "ingest", args); // should refactor to only input args[1:onward], as args[0] is command
             }
         }
 

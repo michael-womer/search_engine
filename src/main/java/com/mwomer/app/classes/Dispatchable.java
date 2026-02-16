@@ -7,6 +7,14 @@ public class Dispatchable{
     public String command = "";
     public String[] options = {};
 
+
+
+    public Dispatchable(boolean error, String command, String[] options) {
+        this.error = error;
+        this.command = command;
+        this.options = options;
+    }
+
     public Dispatchable(boolean error, String errorMessage, String command, String[] options) {
         this.error = error;
         this.errorMessage = errorMessage;
@@ -26,6 +34,14 @@ public class Dispatchable{
     }
 
     public void execute() {
+
+        if (command.equals("ingest")){
+            
+            FileHandler.listDirectory(options[1]);
+            
+
+        }
+
         System.out.println(toString());
     }
 
