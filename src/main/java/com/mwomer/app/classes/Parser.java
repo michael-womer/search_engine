@@ -22,20 +22,23 @@ public class Parser {
             return new Dispatchable(false, "", "help");
         }
 
-        if (args[0].equals("ingest")) {
+        else if (args[0].equals("ingest")) {
             if (args.length != 2) {
                 return new Dispatchable(true, "Invalid number of arguments.  Command usage: ingest <filepath>", "ingest");
             }
         }
 
-        if (args[0].equals("search")) {
+        else if (args[0].equals("search")) {
              if (args.length != 3) {
                 return new Dispatchable(true, "Invalid number of arguments.  Command usage: search <filepath> <search_term>", "search");
             }
         }
+        else {
+            return new Dispatchable(true, "Invalid command.  Use help to view a list of avaliable commands");
+        }
 
         //
-        return new Dispatchable(true, "Internal error", "");
+        return new Dispatchable(true, "Unidentified error");
     }
 
     
