@@ -1,14 +1,21 @@
 package com.mwomer.app.classes;
-import java.nio.file.Files;
+import java.nio.file.*;
+import java.util.stream.Stream;
+import java.io.IOException;
+//pure utility class ; stateless
+public final class FileHandler {
 
-public class FileHandler {
-
-
-    public FileHandler() {
-        System.out.println("Initializing FileHandler");
+    //making constructor private should prevent instantiation
+    private FileHandler() {
+        
     }
 
-    public void listDirectory(String dir) {
-        
+    public static void listDirectory(String dir) {
+        Path dirPath = Paths.get(dir);
+        try (Stream<Path> stream = Files.list(dirPath)) {
+            stream.forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
