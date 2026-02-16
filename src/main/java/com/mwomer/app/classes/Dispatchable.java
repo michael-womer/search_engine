@@ -36,8 +36,7 @@ public class Dispatchable{
     public void execute() {
 
         if (command.equals("ingest")){
-            
-            FileHandler.listDirectory(options[1]);
+            FileHandler.listDirectoryContents(options[1], true);
             
 
         }

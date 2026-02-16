@@ -10,12 +10,25 @@ public final class FileHandler {
         
     }
 
-    public static void listDirectory(String dir) {
+    public static void listDirectoryContents(String dir, boolean recursive) {
         Path dirPath = Paths.get(dir);
-        try (Stream<Path> stream = Files.list(dirPath)) {
-            stream.forEach(System.out::println);
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        if (!recursive) {
+            try (Stream<Path> stream = Files.list(dirPath)) {
+                stream.forEach(System.out::println);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try (Stream<Path> stream = Files.walk(dirPath)) {
+                stream.filter(Files::isRegularFile)
+                .forEach(System.out::println);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
+        
     }
+
 }
