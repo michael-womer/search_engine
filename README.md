@@ -23,6 +23,11 @@ Some other  features I have in mind:
 
 This is a Java project with Maven.  Any additional Maven plugins used will be listed here:
 
+
+## TODO
+
+* Refactor Parser to differentiate arguments and options; will also require some refactoring to Dispatchable
+
 ## Contribution
 
 Please feel free to contribute :)
